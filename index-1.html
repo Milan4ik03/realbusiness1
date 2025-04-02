@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Город мечты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>🏙 Добро пожаловать в Город Мечты!</h1>
+
+    <div class="balance-container">
+        <button id="deposit-button">Пополнить (MetaMask)</button>
+        <p>💰 Баланс: <span id="balance">0</span> $</p>
+    </div>
+
+    <button id="collect-income">Собрать доход</button>
+
+    <h2>🏗 Магазин зданий</h2>
+
+    <div id="store">
+        <div class="building" data-price="500" data-type="house">
+            <h2>🏠 Дом</h2>
+            <p>Цена: 500$</p>
+            <button class="buy-button">Купить</button>
+        </div>
+        <div class="building" data-price="1000" data-type="office">
+            <h2>🏢 Офис</h2>
+            <p>Цена: 1000$</p>
+            <button class="buy-button">Купить</button>
+        </div>
+        <div class="building" data-price="2000" data-type="mall">
+            <h2>🏬 Торговый центр</h2>
+            <p>Цена: 2000$</p>
+            <button class="buy-button">Купить</button>
+        </div>
+    </div>
+
+    <h2>🚗 Дополнительные элементы</h2>
+    <div id="extras">
+        <button class="buy-extra" data-price="300" data-type="road">🚧 Добавить дорогу (300$)</button>
+        <button class="buy-extra" data-price="500" data-type="park">🌳 Добавить парк (500$)</button>
+    </div>
+
+    <h2>🌆 Ваша карта города</h2>
+    <div id="city-map"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

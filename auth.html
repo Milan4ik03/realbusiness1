@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход / Регистрация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('https://source.unsplash.com/1600x900/?city') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 320px;
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔑 Вход / Регистрация</h2>
+        <input type="text" id="username" placeholder="Имя пользователя">
+        <input type="password" id="password" placeholder="Пароль">
+        <button id="login-button">Войти</button>
+        <p class="error" id="error-message">❌ Неверный пароль!</p>
+    </div>
+
+    <script>
+        document.getElementById("login-button").addEventListener("click", function () {
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let errorMessage = document.getElementById("error-message");
+
+            if (!username || !password) {
+                errorMessage.innerText = "Введите имя и пароль!";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            let storedPassword = localStorage.getItem("user_" + username);
+
+            if (storedPassword) {
+                if (storedPassword === password) {
+                    localStorage.setItem("username", username);
+                    window.location.href = "index.html";
+                } else {
+                    errorMessage.innerText = "❌ Неверный пароль!";
+                    errorMessage.style.display = "block";
+                }
+            } else {
+                localStorage.setItem("user_" + username, password);
+                localStorage.setItem("username", username);
+                localStorage.setItem("balance", 0);
+                alert("✅ Регистрация успешна!");
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
